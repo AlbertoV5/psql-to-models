@@ -199,6 +199,4 @@ cython_debug/
 # End of https://www.toptal.com/developers/gitignore/api/python,macos
 
 **/*.DS_Store
-**/models_alchemy.py
-**/models_pydantic.py
 **/.python-version

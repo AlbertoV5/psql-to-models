@@ -1,4 +1,4 @@
-# SQL TO MODEL
+# PSQL TO MODELS
 
 Use regex patterns to match PostgreSQL schemas and output SQLAlchemy and Pydantic Models. 
 
@@ -15,15 +15,29 @@ git clone git@github.com:AlbertoV5/psql-to-models.git
 ```shell
 cd psql-to-models
 ```
-
+Install in editable mode.
 ```shell
 pip install -e .
 ```
 
-## Example
+## Usage
 
-### SQL Input
+```shell
+python -m psql-to-models ./
+```
+Before.
+```shell
+schema.sql
+```
+After.
+```shell
+models_alchemy.py	schema.sql
+models_pydantic.py
+```
 
+## Results Example
+
+SQL Input
 ```sql
 DROP TABLE IF EXISTS DATETIMEEVENTS CASCADE;
 CREATE TABLE DATETIMEEVENTS
@@ -56,8 +70,7 @@ CREATE TABLE DIAGNOSES_ICD
 	CONSTRAINT diagnosesicd_rowid_pk PRIMARY KEY (ROW_ID)
 ) ;
 ```
-
-### SQLALchemy Output
+SQLALchemy Output
 
 ```python
 class Datetimeevents(Base):
@@ -91,7 +104,7 @@ class Diagnoses_icd(Base):
     icd9_code = Column(String(10))
 ```
 
-### Pydantic Output
+Pydantic Output
 
 ```python
 class Datetimeevents(BaseModel):
@@ -171,3 +184,16 @@ TYPE_LOOKUP: dict[str, tuple[str, str]] = {
 }
 """Values are tuples of SQLAlchemy Model Type and Pydantic/Python Type."""
 ```
+
+## Notes
+
+- This utility is meant to be modified to match every case that's why the installation is in editable mode.
+- The __ main __ .py file contains all the necessary logic and header configs.
+- The types.py file contains a lookup table for the postgresql -> models type lookup.
+- The header assumes a path for the SQLAlchemy Base so make sure to change it to match yours, etc.
+
+## Plans
+
+- A more robust tool can be created which uses .toml files (or whatever) for configuration instead of python files so there is no need for editable installation.
+- The applications are Postgresql schemas with FastAPI but the tool can be generalized even further to support different types for other RDMS and frameworks.
+- I'll add support for more queries as I find them in my day-to-day work but feel free to contribute!
