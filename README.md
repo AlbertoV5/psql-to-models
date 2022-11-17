@@ -23,7 +23,7 @@ pip install -e .
 ## Usage
 
 ```shell
-python -m psql-to-models ./
+python -m psql-to-models
 ```
 Before.
 ```shell
