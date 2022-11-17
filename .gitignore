@@ -1,0 +1,4 @@
+**/*.DS_Store
+**/models_alchemy.py
+**/models_pydantic.py
+**/.python-version
