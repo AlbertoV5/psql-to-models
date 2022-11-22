@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "psql-to-models"
-version = "0.1.0"
+version = "0.1.1"
 description = "Use regex patterns to match PostgreSQL schemas and output SQLAlchemy and Pydantic Models. Designed for FastAPI."
 authors = ["AlbertoV5 <58243333+AlbertoV5@users.noreply.github.com>"]
 license = "MIT"

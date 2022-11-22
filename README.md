@@ -23,7 +23,7 @@ pip install -e .
 ## Usage
 
 ```shell
-python -m psql-to-models
+python -m psql-to-models -i ./db/schema.sql -a ./db/models.py -p ./schemas/schemas.py
 ```
 Before.
 ```shell
@@ -197,3 +197,8 @@ TYPE_LOOKUP: dict[str, tuple[str, str]] = {
 - A more robust tool can be created which uses .toml files (or whatever) for configuration instead of python files so there is no need for editable installation.
 - The applications are Postgresql schemas with FastAPI but the tool can be generalized even further to support different types for other RDMS and frameworks.
 - I'll add support for more queries as I find them in my day-to-day work but feel free to contribute!
+
+## Changelog
+
+- 0.1.1 - added REAL -> Float support
+- 0.1.0 - initial release
