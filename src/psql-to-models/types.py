@@ -8,6 +8,7 @@ TYPE_LOOKUP: dict[str, tuple[str, str]] = {
     "DOUBLE": ("DOUBLE_PRECISION", "float"),
     "CHAR": ("CHAR", "str"),
     "TEXT": ("String", "str"),
-    "REAL": ("Float", "float")
+    "REAL": ("Float", "float"),
+    "DATE": ("Date", "date")
 }
 """Values are tuples of SQLAlchemy Model Type and Pydantic/Python Type."""

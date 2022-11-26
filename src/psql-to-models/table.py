@@ -51,8 +51,9 @@ class Table:
             for col in self.columns
             if col.name != "CONSTRAINT"
         )
+        name = "".join(n.capitalize() for n in self.name.split("_"))
         return (
-            f"class {self.name.capitalize()}(Base):\n\n"
+            f"class {name}(Base):\n\n"
             f'    __tablename__ = "{self.name.lower()}"\n\n'
             f"    {cols}\n\n"
         )
