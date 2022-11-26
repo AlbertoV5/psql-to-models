@@ -1,7 +1,7 @@
 """
 SQLAlchemy Models
 """
-from sqlalchemy import Column, Integer, String, CHAR, TIMESTAMP, SmallInteger
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, TIMESTAMP, CHAR, SmallInteger
 from sqlalchemy.dialects.postgresql import DOUBLE_PRECISION
 from db.setup import Base
 

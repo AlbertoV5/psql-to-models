@@ -23,7 +23,7 @@ pip install -e .
 ## Usage
 
 ```shell
-python -m psql-to-models -i ./db/schema.sql -a ./db/models.py -p ./schemas/schemas.py
+python -m psql-to-models -i ./example/schema.sql -a ./example/models_alchemy.py -p ./example/models_pydantic.py
 ```
 Before.
 ```shell
