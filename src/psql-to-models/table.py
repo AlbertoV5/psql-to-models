@@ -17,21 +17,32 @@ class Table:
         """Create Table from string."""
         data = table.split("\n")
         return Table(
-            name=data[0], columns=[Column.from_string(col) for col in data[2:-1]]
+            name=data[0].strip(), columns=[Column.from_string(col) for col in data[2:-1]]
         )
 
     def get_constraints(self) -> None:
         """Use the CONSTRAINT columns to modify the rest of the columns."""
         constraints = [col.params for col in self.columns if col.name == "CONSTRAINT"]
         data = [c.replace(")", "").split("(") for c in constraints]
-        data = {k.strip(): v.strip() for v, k in data}
+        d_data = {}
+        for statement in data:
+            statement = [s.strip() for s in statement]
+            if len(statement) <= 2:
+                d_data[statement[1]] = [statement[0]]
+            else:
+                ref = statement[1].replace(" REFERENCES ", " ").split(" ")
+                d_data[statement[2]] = [statement[0], f"{ref[1]}.{ref[0]}"]
+        # print(d_data)
         for column in self.columns:
-            for k in data:
+            for k in d_data:
                 if column.name == k:
                     column.primary_key = (
-                        "primary_key=True" if data[k] == "PRIMARY KEY" else ""
+                        "primary_key=True" if d_data[k][0] == "PRIMARY KEY" else ""
                     )
-                    column.unique = "unique=True" if data[k] == "UNIQUE" else ""
+                    column.unique = "unique=True" if d_data[k][0] == "UNIQUE" else ""
+                    column.foreign_key = (
+                        f'ForeignKey("{d_data[k][1]}")' if d_data[k][0] == "FOREIGN KEY" else ""
+                    )
 
     def make_alchemy(self) -> str:
         """Make SQLAlchemy model string from this Table."""

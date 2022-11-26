@@ -13,9 +13,8 @@ from .table import Table
 ALCHEMY_HEADER = '''"""
 SQLAlchemy Models
 """
-from sqlalchemy import Column, Integer, String, Float, CHAR, TIMESTAMP, SmallInteger
-from sqlalchemy.dialects.postgresql import DOUBLE_PRECISION
-from db.setup import Base
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, TIMESTAMP, SmallInteger
+from kardias_api.db.setup import Base
 
 '''
 

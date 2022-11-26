@@ -200,5 +200,6 @@ TYPE_LOOKUP: dict[str, tuple[str, str]] = {
 
 ## Changelog
 
+- 0.1.2 - added ForeignKey Support
 - 0.1.1 - added REAL -> Float support
 - 0.1.0 - initial release

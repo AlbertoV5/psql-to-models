@@ -11,6 +11,7 @@ class Column:
     type: str
     params: str
     primary_key: str = ""
+    foreign_key: str = ""
     unique: str = ""
 
     @classmethod
@@ -40,6 +41,7 @@ class Column:
         return (
             f"{self.name.lower()} = Column("
             f"{self.get_type()}"
+            f"{'' if self.foreign_key == '' else f', {self.foreign_key}'}"
             f"{', nullable=False' if 'NOT NULL' in self.params else ''}"
             f"{'' if self.primary_key == '' else f', {self.primary_key}'}"
             f"{'' if self.unique == '' else f', {self.unique}'}"
