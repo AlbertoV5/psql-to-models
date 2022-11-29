@@ -2,6 +2,8 @@
 
 Use regex patterns to match PostgreSQL schemas and output SQLAlchemy and Pydantic Models. 
 
+https://medium.com/@avq5ac1/creating-python-models-from-sql-tables-with-regex-1e1bfd95ece6
+
 Designed for FastAPI.
 
 ## Install
